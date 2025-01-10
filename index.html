@@ -22,12 +22,20 @@
         display:inline-block;
     }
     #trending{
-      overflow-x: auto;
+      overflow: auto;
       
       position: relative;
       outline-style: dotted;
-      height:30vw;
+      height:50vw;
       white-space:nowrap;
+    }
+    #trending-scroll{
+      
+      
+    }
+canvas{
+      padding: 10px;
+      max-width: 100px;
     }
    </style>
 <link rel="icon" type="image/x-icon" href="logo.png">
@@ -35,13 +43,15 @@
   <script src="
   https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js
   "></script>
-  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <button id="hi">hi  </button>
+  <button id="bye">bye  </button>
 <div class="w3-sidebar w3-bar-block w3-card w3-animate-left" style="display:none" id="mySidebar">
   <button class="w3-bar-item w3-button w3-large"
   onclick="w3_close()">Close &times;</button>
-  <a href="#" class="w3-bar-item w3-button">Link 1</a>
-  <a href="#" class="w3-bar-item w3-button">Link 2</a>
-  <a href="#" class="w3-bar-item w3-button">Link 3</a>
+  <a href="index.html" class="w3-bar-item w3-button">Home</a>
+  <a href="create.html" class="w3-bar-item w3-button">Create</a>
+  <a href="#" class="w3-bar-item w3-button">Coming soon</a>
 </div>
 
 <div id="main">
@@ -58,12 +68,17 @@
 
 <div class="w3-container" id="trending">
 <p>Trending Stonks</p>
-<canvas id="myChart" style="width:100%;max-width:700px"><p>An error occured.</p></canvas>
+<div id="trending-scroll">
+  
+ ERROR LOADING CANVASES
+  
+</div>
 </div>
 
 </div>
-
-<script src="index.js" type="module"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+<script src="index.js" ></script>
 
 </body>
 </html>
