@@ -22,20 +22,14 @@
         display:inline-block;
     }
     #trending{
-      overflow: auto;
       
-      position: relative;
-      outline-style: dotted;
-      height:50vw;
-      white-space:nowrap;
     }
-    #trending-scroll{
+    #trending-scroll canvas{
       
       
     }
 canvas{
-      padding: 10px;
-      max-width: 100px;
+      
     }
    </style>
 <link rel="icon" type="image/x-icon" href="logo.png">
@@ -44,8 +38,7 @@ canvas{
   https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js
   "></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-  <button id="hi">hi  </button>
-  <button id="bye">bye  </button>
+  
 <div class="w3-sidebar w3-bar-block w3-card w3-animate-left" style="display:none" id="mySidebar">
   <button class="w3-bar-item w3-button w3-large"
   onclick="w3_close()">Close &times;</button>
@@ -69,15 +62,20 @@ canvas{
 <div class="w3-container" id="trending">
 <p>Trending Stonks</p>
 <div id="trending-scroll">
-  
- ERROR LOADING CANVASES
-  
+   
 </div>
 </div>
 
 </div>
+<script src="https://cdnjs.com/libraries/hammer.js/"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+/>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="index.js" ></script>
 
 </body>
