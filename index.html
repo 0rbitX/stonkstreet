@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<title>W3.CSS</title>
+<title>Stonk Street</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
@@ -31,6 +31,10 @@
 canvas{
       
     }
+    .swiper {
+  width: 600px;
+  height: 300px;
+}
    </style>
 <link rel="icon" type="image/x-icon" href="logo.png">
 <body>
@@ -38,7 +42,9 @@ canvas{
   https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js
   "></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-  
+  <script src="
+https://cdn.jsdelivr.net/npm/moment@2.30.1/moment.min.js
+"></script>
 <div class="w3-sidebar w3-bar-block w3-card w3-animate-left" style="display:none" id="mySidebar">
   <button class="w3-bar-item w3-button w3-large"
   onclick="w3_close()">Close &times;</button>
@@ -60,12 +66,33 @@ canvas{
 
 
 <div class="w3-container" id="trending">
-<p>Trending Stonks</p>
+<p>Top Stonks</p>
 <div id="trending-scroll">
-   
+  <div class="swiper">
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper">
+      <!-- Slides -->
+      <div class="swiper-slide" id="tr1">Slide 1</div>
+    <div class="swiper-slide" id="tr2">Slide 2</div>
+    <div class="swiper-slide" id="tr3">Slide 3</div>
+    <div class="swiper-slide" id="tr4">Slide 4</div>
+    <div class="swiper-slide" id="tr5">Slide 5</div>
+    
+      
+    </div>
+    <!-- If we need pagination -->
+    <div class="swiper-pagination"></div>
+  
+    <!-- If we need navigation buttons -->
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+  
+    <!-- If we need scrollbar -->
+    <div class="swiper-scrollbar"></div>
+  </div>
 </div>
 </div>
-
+<canvas id="11"></canvas>
 </div>
 <script src="https://cdnjs.com/libraries/hammer.js/"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>

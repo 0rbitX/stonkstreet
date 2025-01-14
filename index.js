@@ -1,9 +1,26 @@
-var fullstop =true;
+var fullstop =false;
 var x = 0;
+var now = moment();
+
 var stonkslist =[]
+function shuffle(array) {
+  let currentIndex = array.length;
+
+  // While there remain elements to shuffle...
+  while (currentIndex != 0) {
+
+    // Pick a remaining element...
+    let randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    // And swap it with the current element.
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex], array[currentIndex]];
+  }
+}
 const swiper = new Swiper('.swiper', {
   // Optional parameters
-  direction: 'horizantal',
+  direction: 'horizontal',
   loop: true,
 
   // If we need pagination
@@ -12,48 +29,23 @@ const swiper = new Swiper('.swiper', {
   },
 
   // Navigation arrows
-  
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
 
   // And if we need scrollbar
   scrollbar: {
     el: '.swiper-scrollbar',
   },
 });
-function switchstonk(place,num,first){
+function switchstonk(num,first,type){
   
-  if(first){
-    $(place).append("<div id='trenddiv'><canvas id='canvascap'></canvas</div>")
-  }
-  var past = []
-    var list=stonkslist[num].past2
-      var store= [stonkslist[num].curprice]
-
-    Object.keys(list).forEach(function(key){
-      console.log(key,list[key])
-      store.push(list[key])
-    })
-  
-    store.reverse()
-    console.log(store)
+  switch(type){
+  case "trend":
     
-    const myChar = new Chart("canvascap", {
-      text:"hi",
-      type: "line",
-      data: {labels:["2:00","1:45","1:30","1:15","1:00","0:45","0:30","0:15","current"],datasets:[{label:"Past 2 minutes",data:store}]},
-      options: {
-        plugins: {
-            title: {
-                display: true,
-                text: stonkslist[num].name+" chart"
-            }
-        }
-    }
-    });
-    $("#canvascap").on("click",function(){
-      location.href = "view.html?id="+num
-    })
-  
-}
+  break;
+}}
 // Your Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyAAL6ZU9cRMKKd4IbTzqdjkyJar0zu1kP8",
@@ -63,9 +55,11 @@ const firebaseConfig = {
   messagingSenderId: "719359222053",
   appId: "1:719359222053:web:327ae56869f46ba5217acc"
 };
+var min2;
 firebase.initializeApp(firebaseConfig);
 // Initialize Firebase
 const db = firebase.firestore();
+
 function addDB(coll,){}
 if(!fullstop){
   const stonks = db.collection("all").doc("stonks")
@@ -75,12 +69,50 @@ if(!fullstop){
       var y = doc.data()
       var list = y.list
      for(var i =0; i<list.length;i++){
-      stonkslist[i]=list[i]
-      if(x==0){
-      switchstonk("#trending-scroll",0,true)
-      }
       
-  
+      
+       
+      var tr =0;
+      console.log()
+      
+     var min2 = Object.assign({},list[i].past2)
+     
+     console.log(min2)
+      if(min2["0"]*2<list[i].curprice){
+        if(tr>5){
+
+        }
+        else{
+          tr++;
+        var store = list[i].past2
+        store.push(list[i].curprice)
+        console.log(store)
+        var id1 = "cc"+tr
+          console.log(id1)
+          console.log(document.getElementById(id1))
+        $("#tr"+tr).html("<canvas id='"+id1+"'></canvas>")
+        console.log(document.getElementById(id1))
+        const myChar = new Chart("cc"+tr, {
+          text:"hi",
+          type: "line",
+          data: {labels:["2:00","1:45","1:30","1:15","1:00","0:45","0:30","0:15","current"],datasets:[{data:store}]},
+          options: {
+            plugins: {
+                title: {
+                    display: true,
+                    text: list[i].name+" chart"
+                }
+            }
+        }
+        });
+        $("#tr"+tr).on("click",function(){
+          location.href =  "view.html?id="+i
+          var now = moment();
+          var json = {data:list[i],time:now}
+          localStorage.setItem("smldb",JSON.stringify(json))
+        })
+      }
+      }else{console.log("not trending")}
       console.log()
      }
     
